@@ -12,16 +12,9 @@
             background-color: #f8f9fa;
             color: #212529;
         }
-        .signal-strength {
-            border-left: 5px solid #45dfb1; 
-        }
-        .signal-weakness {
-            border-left: 5px solid #dc3545; /* Red */
-        }
-        /* GHI CHÚ: CSS MỚI CHO NHÓM OBSERVE */
-        .signal-observe {
-            border-left: 5px solid #3b82f6; /* Blue */
-        }
+        .signal-strength { border-left: 5px solid #45dfb1; }
+        .signal-weakness { border-left: 5px solid #dc3545; }
+        .signal-observe { border-left: 5px solid #3b82f6; }
         .header-container {
             background-color: #213a57;
             background-image: linear-gradient(to right, #213a57, #14919b);
@@ -45,66 +38,18 @@
         .stock-card:hover {
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
         }
-        .stock-card.active .card-details {
-            max-height: 2000px;
-        }
-        .stock-card.active .card-header .chevron-icon {
-            transform: rotate(180deg);
-        }
-        ::placeholder {
-            color: #a0aec0;
-        }
-        .gemini-analysis-container {
-            border-top: 1px dashed #e2e8f0;
-            margin-top: 1rem;
-            padding-top: 1rem;
-        }
-        .gemini-button {
-            background-color: #80ed99;
-            color: #213a57;
-            font-weight: bold;
-            padding: 8px 16px;
-            border-radius: 9999px;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .gemini-button:hover {
-            background-color: #45dfb1;
-            box-shadow: 0 0 15px rgba(128, 237, 153, 0.5);
-        }
-        .loading-spinner {
-            border: 2px solid #a0aec0;
-            border-top: 2px solid #213a57;
-            border-radius: 50%;
-            width: 16px;
-            height: 16px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        .stock-card.active .card-details { max-height: 2000px; }
+        .stock-card.active .card-header .chevron-icon { transform: rotate(180deg); }
+        ::placeholder { color: #a0aec0; }
         .scrollable-list {
             max-height: 65vh;
             overflow-y: auto;
             padding-right: 10px;
         }
-        .scrollable-list::-webkit-scrollbar {
-          width: 8px;
-        }
-        .scrollable-list::-webkit-scrollbar-track {
-          background: #f1f1f1;
-          border-radius: 10px;
-        }
-        .scrollable-list::-webkit-scrollbar-thumb {
-          background: #ccc;
-          border-radius: 10px;
-        }
-        .scrollable-list::-webkit-scrollbar-thumb:hover {
-          background: #aaa;
-        }
+        .scrollable-list::-webkit-scrollbar { width: 8px; }
+        .scrollable-list::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .scrollable-list::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        .scrollable-list::-webkit-scrollbar-thumb:hover { background: #aaa; }
     </style>
 </head>
 <body class="antialiased">
@@ -125,13 +70,13 @@
     </div>
 
     <div class="container mx-auto p-4 md:p-6" >
-        <div class="text-center mb-8 flex flex-wrap justify-center gap-4"  >
-             <a href=" #" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-[#14919b] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#0b6477] transition duration-300 ease-in-out shadow-md"><i class="fas fa-sun mr-2"></i>Bản tin sáng</a>
-             <a href=" #" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-[#0b6477] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#14919b] transition duration-300 ease-in-out shadow-md"><i class="fas fa-calendar-week mr-2"></i>Bản tin tuần</a>
-             <a href=" #" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-calendar-star mr-2"></i>Sự kiện</a>
-             <a href=" #" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-poll-h mr-2"></i>Khảo sát</a>
-             <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-filter mr-2"></i>Bộ lọc</a>
-             <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-link mr-2"></i>Khác</a>
+        <div class="text-center mb-8 flex flex-wrap justify-center gap-4">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-[#14919b] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#0b6477] transition duration-300 ease-in-out shadow-md"><i class="fas fa-sun mr-2"></i>Bản tin sáng</a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-[#0b6477] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#14919b] transition duration-300 ease-in-out shadow-md"><i class="fas fa-calendar-week mr-2"></i>Bản tin tuần</a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-calendar-alt mr-2"></i>Sự kiện</a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-poll-h mr-2"></i>Khảo sát</a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-filter mr-2"></i>Bộ lọc</a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-link mr-2"></i>Khác</a>
         </div>
 
         <div id="stock-dashboard" class="grid grid-cols-1 gap-8">
@@ -160,14 +105,14 @@
             <p class="text-gray-600 font-semibold">Chúc Quý nhà đầu tư một tuần giao dịch thành công và hiệu quả!</p>
         </footer>
     </div>
-   
+    
+    
     <script>
-        // GHI CHÚ: CẤU TRÚC DỮ LIỆU MỚI VỚI 3 NHÓM
         const stockData = {
-  "strength": [],
-  "weakness": [],
-  "observe": [
-    {
+            "strength": [],
+            "weakness": [],
+            "observe": [
+                {
       "ticker": "ACB",
       "name": "Ngan hang TMCP A Chau",
       "sector": "Ngan hang",
@@ -1207,11 +1152,10 @@
       "action": "Chưa đủ dữ kiện để đánh giá",
       "counter": "Chưa đủ dữ kiện để đánh giá"
     }
-  ]
-};
+            ]
+        };
 
-        // GHI CHÚ: HÀM createStockCard ĐÃ ĐƯỢC CẬP NHẬT ĐỂ HỖ TRỢ NHÓM 'observe'
-        function createStockCard(stock, type) {
+  function createStockCard(stock, type) {
             let priceChangeColor = stock.change_positive ? 'text-green-600' : 'text-red-600';
             let cardBorder = '';
             let icon = '';
@@ -1228,7 +1172,7 @@
                 icon = `<i class="fas fa-arrow-trend-down mr-2 text-red-500"></i>`;
                 signalColor = 'bg-red-50 text-red-700';
                 tickerColor = 'text-red-600';
-            } else { // type === 'observe'
+            } else {
                 cardBorder = 'signal-observe';
                 icon = `<i class="fas fa-binoculars mr-2 text-blue-500"></i>`;
                 signalColor = 'bg-blue-50 text-blue-700';
@@ -1246,7 +1190,7 @@
                     </div>
                     <div class="card-details">
                         <div class="p-5 border-t border-gray-200">
-                             <div class="flex justify-between items-start mb-3">
+                            <div class="flex justify-between items-start mb-3">
                                 <p class="text-sm text-gray-600 sm:hidden">${stock.name}</p>
                                 <span class="text-xs font-semibold bg-gray-200 text-gray-700 px-2 py-1 rounded-full">${stock.exchange}</span>
                             </div>
@@ -1255,7 +1199,7 @@
                                 <span class="ml-2 text-md font-semibold ${priceChangeColor}">${stock.change}</span>
                             </div>
                             <div class="text-sm text-gray-600 space-y-2 mb-4">
-                                <p><i class="fas fa-briefcase w-5 text-center mr-1 text-gray-400"></i> ${stock.sector}</p>
+                                <p><i class="fas fa-briefcase w-5 text-center mr-1 text-gray-400"></i> ${stock.sector || 'N/A'}</p>
                             </div>
                             <div class="${signalColor} p-3 rounded-lg">
                                 <h4 class="font-semibold text-md mb-2 flex items-center">${icon}Tín hiệu nổi bật</h4>
@@ -1275,59 +1219,17 @@
                                     <p class="text-gray-600 leading-relaxed">${stock.counter}</p>
                                 </div>
                             </div>
-                  
                         </div>
                     </div>
-                </div>
-            `;
+                </div>`;
         }
-       
-        async function getGeminiAnalysis(stock, buttonElement) {
-            const outputElement = buttonElement.nextElementSibling;
-            outputElement.style.display = 'block';
-            outputElement.innerHTML = `<div class="flex items-center gap-2 text-gray-500"><div class="loading-spinner"></div><span>AI đang phân tích, vui lòng chờ...</span></div>`;
-            buttonElement.disabled = true;
-
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-            const systemPrompt = "Bạn là một nhà phân tích tài chính chuyên nghiệp tại Việt Nam. Dựa vào thông tin được cung cấp về một cổ phiếu, hãy đưa ra một đoạn phân tích chuyên sâu, ngắn gọn và dễ hiểu (khoảng 3-4 câu). Tập trung vào ý nghĩa của tín hiệu kỹ thuật, các kịch bản có thể xảy ra, và những chỉ báo quan trọng nhà đầu tư cần theo dõi tiếp theo. Giữ văn phong chuyên nghiệp nhưng gần gũi.";
-            const userQuery = `Phân tích chuyên sâu về cổ phiếu ${stock.ticker} (${stock.name}). Tín hiệu kỹ thuật hiện tại là "${stock.signal}". Phân tích ban đầu: "${stock.analysis}". Gợi ý hành động: "${stock.action}". Rủi ro: "${stock.counter}".`;
-
-            const payload = { contents: [{ parts: [{ text: userQuery }] }], systemInstruction: { parts: [{ text: systemPrompt }] } };
-            try {
-                const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                if (!response.ok) throw new Error(`API error: ${response.statusText}`);
-                const result = await response.json();
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-                if (text) outputElement.innerHTML = text.replace(/\n/g, '<br>'); else throw new Error("Không nhận được phân tích hợp lệ từ AI.");
-            } catch (error) {
-                console.error("Gemini API call failed:", error);
-                outputElement.innerHTML = `<p class="text-red-500">Rất tiếc, đã xảy ra lỗi khi phân tích. Vui lòng thử lại sau.</p>`;
-            } finally {
-                buttonElement.style.display = 'none';
-            }
-        }
-
-        // GHI CHÚ: HÀM attachEventListeners ĐÃ ĐƯỢC CẬP NHẬT ĐỂ TÌM KIẾM TRONG CẢ 3 NHÓM
+        
         function attachEventListeners() {
             document.querySelectorAll('.card-header').forEach(header => {
                 header.addEventListener('click', () => header.closest('.stock-card').classList.toggle('active'));
             });
-
-            document.querySelectorAll('.gemini-button').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const card = button.closest('.stock-card');
-                    const ticker = card.dataset.ticker;
-                    const stock = stockData.strength.find(s => s.ticker === ticker) || 
-                                  stockData.weakness.find(s => s.ticker === ticker) || 
-                                  stockData.observe.find(s => s.ticker === ticker);
-                    if (stock) getGeminiAnalysis(stock, button);
-                });
-            });
         }
-
-        // GHI CHÚ: HÀM renderStocks ĐÃ ĐƯỢC CẬP NHẬT TOÀN DIỆN ĐỂ XỬ LÝ 3 NHÓM
+        
         function renderStocks(filter = '') {
             const strengthList = document.getElementById('strength-list');
             const weaknessList = document.getElementById('weakness-list');
@@ -1336,33 +1238,33 @@
             const weaknessSection = document.getElementById('weakness-section');
             const observeSection = document.getElementById('observe-section');
             const noResults = document.getElementById('no-results');
-
-            strengthList.innerHTML = '';
-            weaknessList.innerHTML = '';
-            observeList.innerHTML = '';
-           
+            
             const searchTerm = filter.trim().toUpperCase();
 
             const filteredStrength = stockData.strength.filter(stock => stock.ticker.toUpperCase().includes(searchTerm));
             const filteredWeakness = stockData.weakness.filter(stock => stock.ticker.toUpperCase().includes(searchTerm));
             const filteredObserve = stockData.observe.filter(stock => stock.ticker.toUpperCase().includes(searchTerm));
 
-            filteredStrength.forEach(stock => { strengthList.innerHTML += createStockCard(stock, 'strength'); });
-            filteredWeakness.forEach(stock => { weaknessList.innerHTML += createStockCard(stock, 'weakness'); });
-            filteredObserve.forEach(stock => { observeList.innerHTML += createStockCard(stock, 'observe'); });
+            const strengthHTML = filteredStrength.map(stock => createStockCard(stock, 'strength')).join('');
+            const weaknessHTML = filteredWeakness.map(stock => createStockCard(stock, 'weakness')).join('');
+            const observeHTML = filteredObserve.map(stock => createStockCard(stock, 'observe')).join('');
+
+            strengthList.innerHTML = strengthHTML;
+            weaknessList.innerHTML = weaknessHTML;
+            observeList.innerHTML = observeHTML;
 
             strengthSection.style.display = filteredStrength.length > 0 ? 'block' : 'none';
             weaknessSection.style.display = filteredWeakness.length > 0 ? 'block' : 'none';
             observeSection.style.display = filteredObserve.length > 0 ? 'block' : 'none';
             
             noResults.style.display = (filteredStrength.length === 0 && filteredWeakness.length === 0 && filteredObserve.length === 0) ? 'block' : 'none';
-           
+            
             attachEventListeners();
         }
-       
+        
         function updateTime() {
             const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
             document.getElementById('datetime-container').textContent = now.toLocaleString('vi-VN', options);
         }
 
@@ -1375,19 +1277,16 @@
             const searchBtn = document.getElementById('search-btn');
             const resetBtn = document.getElementById('reset-btn');
 
-            searchBtn.addEventListener('click', () => renderStocks(searchInput.value));
-            searchInput.addEventListener('keyup', (event) => { if (event.key === 'Enter') renderStocks(searchInput.value); });
-            resetBtn.addEventListener('click', () => { searchInput.value = ''; renderStocks(); });
+            const performSearch = () => renderStocks(searchInput.value);
+
+            searchInput.addEventListener('input', performSearch);
+            searchBtn.addEventListener('click', performSearch);
+
+            resetBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                performSearch();
+            });
         });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
