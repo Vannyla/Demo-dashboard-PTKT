@@ -81,18 +81,24 @@
 
         <div id="stock-dashboard" class="grid grid-cols-1 gap-8">
             <div id="strength-section">
-                <h2 class="text-2xl font-bold text-[#213a57] mb-4 border-b-2 border-[#45dfb1] pb-2"><i class="fas fa-arrow-trend-up mr-2 text-green-500"></i>TÍN HIỆU SỨC MẠNH (STRENGTH)</h2>
-                <div id="strength-list" class="scrollable-list grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                <h2 id="strength-header" class="text-2xl font-bold text-[#213a57] mb-4 border-b-2 border-[#45dfb1] pb-2 cursor-pointer">
+                    <i class="fas fa-arrow-trend-up mr-2 text-green-500"></i>TÍN HIỆU SỨC MẠNH (STRENGTH)
+                </h2>
+                <div id="strength-list" class="scrollable-list grid grid-cols-1 md:grid-cols-2 gap-4 hidden"></div>
             </div>
 
             <div id="weakness-section">
-                <h2 class="text-2xl font-bold text-red-600 mb-4 border-b-2 border-red-500 pb-2"><i class="fas fa-arrow-trend-down mr-2 text-red-500"></i>TÍN HIỆU SUY YẾU (WEAKNESS)</h2>
-                <div id="weakness-list" class="scrollable-list grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                <h2 id="weakness-header" class="text-2xl font-bold text-red-600 mb-4 border-b-2 border-red-500 pb-2 cursor-pointer">
+                    <i class="fas fa-arrow-trend-down mr-2 text-red-500"></i>TÍN HIỆU SUY YẾU (WEAKNESS)
+                </h2>
+                <div id="weakness-list" class="scrollable-list grid grid-cols-1 md:grid-cols-2 gap-4 hidden"></div>
             </div>
             
             <div id="observe-section">
-                <h2 class="text-2xl font-bold text-blue-600 mb-4 border-b-2 border-blue-500 pb-2"><i class="fas fa-binoculars mr-2 text-blue-500"></i>QUAN SÁT THÊM (OBSERVE)</h2>
-                <div id="observe-list" class="scrollable-list grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                <h2 id="observe-header" class="text-2xl font-bold text-blue-600 mb-4 border-b-2 border-blue-500 pb-2 cursor-pointer">
+                    <i class="fas fa-binoculars mr-2 text-blue-500"></i>QUAN SÁT THÊM (OBSERVE)
+                </h2>
+                <div id="observe-list" class="scrollable-list grid grid-cols-1 md:grid-cols-2 gap-4 hidden"></div>
             </div>
 
             <div id="no-results" class="hidden text-center py-10">
@@ -757,7 +763,7 @@
     "analysis": "Phiên giao dịch không khớp với bất kỳ mẫu hình VSA rõ ràng nào. Spread (2.79%) và khối lượng (bằng 58% TB20) không cho thấy tín hiệu sức mạnh hay suy yếu cụ thể. Các chỉ báo kỹ thuật (RSI: 48.01, MACD_Hist: 0.17) cũng không rõ ràng.",
     "action": "Đứng ngoài và quan sát. Tránh giao dịch khi không có tín hiệu xác nhận.",
     "counter": "Việc thiếu tín hiệu rõ ràng có thể là một tín hiệu 'yên tĩnh trước cơn bão', cần theo dõi kỹ các phiên tiếp theo."
-  }
+  }, // <================== ĐÃ SỬA: Thêm dấu phẩy bị thiếu
 {
     "ticker": "NLG",
     "name": "CTCP Dau tu Nam Long",
@@ -1055,7 +1061,7 @@
     "signal": "No Clear Signal",
     "analysis": "Phiên giao dịch không khớp với bất kỳ mẫu hình VSA rõ ràng nào. Spread (2.14%) và khối lượng (bằng 58% TB20) không cho thấy tín hiệu sức mạnh hay suy yếu cụ thể. Các chỉ báo kỹ thuật (RSI: 48.01, MACD_Hist: -0.09) cũng không rõ ràng.",
     "action": "Đứng ngoài và quan sát. Tránh giao dịch khi không có tín hiệu xác nhận.",
-    "counter": "Việc thiếu tín hiệu rõ ràng có thể là một tín hiệu 'yên tĩnh trước cơn bão', cần theo dõi kỹ các phiên tiếp theo."
+    "counter": "Việc thiếu tín hiệu rõ ràng có thể là một tín hiệu 'yên tĩnh trước cơn bảo', cần theo dõi kỹ các phiên tiếp theo."
   },
   {
     "ticker": "VIC",
@@ -1277,13 +1283,29 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderStocks();
-            updateTime();
-            setInterval(updateTime, 1000);
-
+            // ================== ĐÃ SỬA: Lấy các phần tử header và list ==================
+            const strengthHeader = document.getElementById('strength-header');
+            const weaknessHeader = document.getElementById('weakness-header');
+            const observeHeader = document.getElementById('observe-header');
+            
+            const strengthList = document.getElementById('strength-list');
+            const weaknessList = document.getElementById('weakness-list');
+            const observeList = document.getElementById('observe-list');
+            
             const searchInput = document.getElementById('stock-search');
             const searchBtn = document.getElementById('search-btn');
             const resetBtn = document.getElementById('reset-btn');
+
+            // ================== ĐÃ SỬA: Thêm sự kiện click cho các tiêu đề (Accordion) ==================
+            strengthHeader.addEventListener('click', () => strengthList.classList.toggle('hidden'));
+            weaknessHeader.addEventListener('click', () => weaknessList.classList.toggle('hidden'));
+            observeHeader.addEventListener('click', () => observeList.classList.toggle('hidden'));
+            
+            
+            // --- Các hàm có sẵn của bạn ---
+            renderStocks();
+            updateTime();
+            setInterval(updateTime, 1000);
 
             const performSearch = () => renderStocks(searchInput.value);
 
@@ -1298,34 +1320,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
