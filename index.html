@@ -12,9 +12,12 @@
             background-color: #f8f9fa;
             color: #212529;
         }
+        /* Style cho các phần tín hiệu */
         .signal-strength { border-left: 5px solid #45dfb1; }
         .signal-weakness { border-left: 5px solid #dc3545; }
         .signal-observe { border-left: 5px solid #3b82f6; }
+        
+        /* Style cho Header cố định */
         .header-container {
             background-color: #213a57;
             background-image: linear-gradient(to right, #213a57, #14919b);
@@ -25,6 +28,8 @@
             padding: 1.5rem 1rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+        
+        /* Style cho Card Cổ phiếu */
         .card-details {
             max-height: 0;
             overflow: hidden;
@@ -41,6 +46,8 @@
         .stock-card.active .card-details { max-height: 2000px; }
         .stock-card.active .card-header .chevron-icon { transform: rotate(180deg); }
         ::placeholder { color: #a0aec0; }
+        
+        /* Style cho Danh sách có thể cuộn */
         .scrollable-list {
             max-height: 65vh;
             overflow-y: auto;
@@ -50,6 +57,89 @@
         .scrollable-list::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
         .scrollable-list::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
         .scrollable-list::-webkit-scrollbar-thumb:hover { background: #aaa; }
+        
+        /* --- CSS cho Nút Công Cụ Nổi --- */
+        .floating-tool-button {
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px; 
+            background-color: #007bff; 
+            color: white; 
+            padding: 15px 20px;
+            border-radius: 50px; /* Nút tròn */
+            text-decoration: none; 
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 1000; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            border: none; /* Loại bỏ viền button mặc định */
+        }
+        .floating-tool-button:hover {
+            background-color: #0056b3; 
+            transform: scale(1.05); 
+        }
+
+        /* --- CSS cho Modal Tra Cứu --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5); 
+            backdrop-filter: blur(2px);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px; 
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .term-table-container {
+            max-height: 70vh; 
+            overflow-y: auto;
+        }
+
+        .term-table th, .term-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .term-table th {
+            background-color: #f7f9fc;
+            position: sticky; 
+            top: 0;
+            z-index: 10;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -74,7 +164,6 @@
             <a href="https://vannyla.github.io/Nhan-dinh-sang/" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-[#14919b] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#0b6477] transition duration-300 ease-in-out shadow-md"><i class="fas fa-sun mr-2"></i>Nhận định sáng</a>
             <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-[#0b6477] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#14919b] transition duration-300 ease-in-out shadow-md"><i class="fas fa-calendar-week mr-2"></i>Bản tin tuần</a>
             <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-calendar-alt mr-2"></i>Sự kiện</a>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-poll-h mr-2"></i>Khảo sát</a>
             <a href="https://vannyla.github.io/Tracuu_Lenh-Dieu-Kien/" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-filter mr-2"></i>Mô phỏng lệnh điều kiện</a>
             <a href="https://vannyla.github.io/Other-items/" target="_blank" rel="noopener noreferrer" class="news-link inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out shadow-md"><i class="fas fa-link mr-2"></i>Luận điểm đầu tư Q4.2025</a>
         </div>
@@ -106,6 +195,7 @@
                 <p class="text-xl text-gray-500">Không tìm thấy mã cổ phiếu phù hợp.</p>
             </div>
         </div>
+        
         <footer class="text-center mt-10 py-6 border-t border-gray-200">
             <p class="text-gray-600 font-semibold mb-6">Chúc Quý nhà đầu tư một tuần giao dịch thành công và hiệu quả.!</p>
             
@@ -119,6 +209,29 @@
         
     </div>
     
+    <button id="open-term-modal-btn" class="floating-tool-button">
+        <i class="fas fa-book-open mr-2"></i> Tra Cứu Nhanh
+    </button>
+    
+    <div id="term-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-term-modal-btn">&times;</span>
+            <h2 class="text-2xl font-bold text-[#213a57] mb-4">📖 Tra Cứu Thuật Ngữ VSA/PTKT</h2>
+            <div class="term-table-container">
+                <table id="term-table" class="term-table min-w-full bg-white border-collapse">
+                    <thead>
+                        <tr class="text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                            <th class="w-1/5">Thuật ngữ / Viết tắt</th>
+                            <th class="w-1/5">Tên đầy đủ</th>
+                            <th class="w-3/5">Diễn giải</th>
+                        </tr>
+                    </thead>
+                    <tbody id="term-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     
     <script>
         const stockData = {
@@ -1169,6 +1282,67 @@
   }
  ]
 };
+// --- DỮ LIỆU THUẬT NGỮ VSA/PTKT ---
+        const vsaTerms = [
+            { term: "VSA", fullName: "Volume Spread Analysis", explanation: "Phân tích Chênh lệch Khối lượng. Tập trung vào (1) Spread (biên độ giá High-Low), (2) Volume (khối lượng), và (3) Giá đóng cửa để hiểu hành động của 'dòng tiền thông minh'." },
+            { term: "Wyckoff", fullName: "Phương pháp Wyckoff", explanation: "Phương pháp phân tích thị trường toàn diện, tập trung vào các quy luật Cung-Cầu, Nguyên nhân-Kết quả. VSA là một phần ứng dụng của Wyckoff." },
+            { term: "SOS", fullName: "Sign of Strength", explanation: "Dấu hiệu Sức mạnh (Tín hiệu tiềm năng tăng giá)." },
+            { term: "SOW", fullName: "Sign of Weakness", explanation: "Dấu hiệu Yếu kém (Tín hiệu tiềm năng giảm giá)." },
+            { term: "Spread (VSA)", fullName: "Biên độ nến", explanation: "Chênh lệch giữa giá cao nhất (High) và giá thấp nhất (Low) trong phiên. Spread 'rộng' cho thấy biến động lớn; Spread 'hẹp' cho thấy sự ổn định hoặc do dự." },
+            { term: "No Supply (Test for Supply)", fullName: "Thiếu Cung / Kiểm tra Cung", explanation: "Tín hiệu [STRENGTH]. Phiên giảm điểm/tăng yếu, spread hẹp, khối lượng rất thấp. Cho thấy áp lực bán đã cạn kiệt. Thường xuất hiện sau khi giá giảm." },
+            { term: "Effort to Rise (Breakout)", fullName: "Nỗ lực Tăng giá (Phá vỡ)", explanation: "Tín hiệu [STRENGTH]. Phiên tăng điểm mạnh, spread rộng, đóng cửa gần mức cao nhất, đi kèm khối lượng cao. Xác nhận lực mua đang áp đảo." },
+            { term: "Upthrust (UTAD)", fullName: "Phá vỡ Giả (lên trên)", explanation: "Tín hiệu [WEAKNESS]. Phiên tăng điểm, thường phá vỡ đỉnh cũ, nhưng bị bán ngược và đóng cửa ở nửa dưới nến, với khối lượng cao. Đây là một 'bẫy tăng giá'." },
+            { term: "No Demand", fullName: "Thiếu Cầu", explanation: "Tín hiệu [WEAKNESS]. Phiên tăng điểm (thường là tăng yếu), spread hẹp, với khối lượng rất thấp. Cho thấy đà tăng không bền vững vì thiếu sự tham gia của dòng tiền (lực cầu)." },
+            { term: "Effort to Fall", fullName: "Nỗ lực Giảm giá", explanation: "Tín hiệu [WEAKNESS]. Phiên giảm điểm, spread rộng, đóng cửa gần mức thấp nhất, đi kèm khối lượng cao. Xác nhận lực bán đang áp đảo." },
+            { term: "Buying Climax", fullName: "Cao trào Mua", explanation: "Tín hiệu [WEAKNESS]. Phiên tăng điểm rất mạnh, spread cực rộng, khối lượng siêu cao, nhưng giá không đóng cửa ở mức cao nhất (bị bán ngược). Cảnh báo đỉnh ngắn hạn." },
+            { term: "Indecision Bar / Doji", fullName: "Nến Do dự / Nến Doji", explanation: "Nến có thân rất hẹp, thể hiện sự thiếu quyết đoán của thị trường. Cần quan sát thêm." }
+            // Lưu ý: Tôi đã lược bớt một số thuật ngữ ít phổ biến hơn từ file CSV của bạn để giữ tính trọng tâm.
+        ];
+
+        // --- XỬ LÝ SỰ KIỆN NÚT TRA CỨU VÀ MODAL ---
+        const termModal = document.getElementById('term-modal');
+        const openModalBtn = document.getElementById('open-term-modal-btn');
+        const closeModalBtn = document.getElementById('close-term-modal-btn');
+        const termTableBody = document.getElementById('term-table-body');
+
+        // Hàm dựng bảng dữ liệu
+        function renderTermTable() {
+            termTableBody.innerHTML = ''; // Xóa nội dung cũ
+            vsaTerms.forEach(term => {
+                const row = termTableBody.insertRow();
+                row.className = 'hover:bg-gray-50 transition duration-150 ease-in-out';
+                
+                const termCell = row.insertCell();
+                termCell.innerHTML = `<span class="font-bold text-[#213a57]">${term.term}</span>`;
+
+                const fullNameCell = row.insertCell();
+                fullNameCell.textContent = term.fullName;
+
+                const explanationCell = row.insertCell();
+                explanationCell.textContent = term.explanation;
+            });
+        }
+
+        // Sự kiện mở modal
+        openModalBtn.onclick = function() {
+            renderTermTable(); // Dựng bảng trước khi mở
+            termModal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Ngăn cuộn trang nền
+        }
+
+        // Sự kiện đóng modal (nút X)
+        closeModalBtn.onclick = function() {
+            termModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Cho phép cuộn lại
+        }
+
+        // Sự kiện đóng modal (nhấn ra ngoài)
+        window.onclick = function(event) {
+            if (event.target == termModal) {
+                termModal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Cho phép cuộn lại
+            }
+        }
   function createStockCard(stock, type) {
             let priceChangeColor = stock.change_positive ? 'text-green-600' : 'text-red-600';
             let cardBorder = '';
@@ -1320,3 +1494,4 @@
     </script>
 </body>
 </html>
+
